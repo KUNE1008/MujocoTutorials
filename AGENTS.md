@@ -16,9 +16,14 @@ All Python packages are installed globally via pip: `mujoco`, `numpy`, `matplotl
 - `direct_transcription_method.ipynb` is explicitly "Work in Progress" and does not complete.
 - `robot_arm_mocap.py` requires a GUI display (GLFW/X11) and cannot run in headless environments.
 
-### Rendering
+### Headless rendering
 
-MuJoCo offscreen rendering works in this environment (EGL backend). Use `mujoco.Renderer` for headless rendering. Use `matplotlib.use('Agg')` when saving plots non-interactively.
+Environment variable `MUJOCO_GL=egl` is set in `~/.bashrc` for headless GPU-accelerated rendering. Three backends are available:
+- `egl` (default, recommended for headless) — no display needed
+- `osmesa` — pure software rendering, no display needed
+- `glfw` — also works in this VM (Xvfb available), but primarily for GUI use
+
+Use `mujoco.Renderer` for offscreen rendering. Use `matplotlib.use('Agg')` when saving plots non-interactively.
 
 ### Linting
 
